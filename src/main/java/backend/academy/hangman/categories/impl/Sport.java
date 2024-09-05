@@ -1,4 +1,6 @@
-package backend.academy.hangman.categories;
+package backend.academy.hangman.categories.impl;
+
+import backend.academy.hangman.categories.Category;
 
 public class Sport extends Category {
 
