@@ -4,16 +4,29 @@ import backend.academy.hangman.Level;
 import java.util.Random;
 
 public abstract class Category {
-    protected static String[] easyWords;
-    protected static String[] mediumWords;
-    protected static String[] hardWords;
+    protected static String[] englishEasyWords;
+    protected static String[] englishMediumWords;
+    protected static String[] englishHardWords;
 
-    public String getRandomWord(Level level){
+    protected static String[] russianEasyWords;
+    protected static String[] russianMediumWords;
+    protected static String[] russianHardWords;
+
+    public String getEnglishRandomWord(Level level){
         Random random = new Random();
         return switch (level) {
-            case EASY -> easyWords[random.nextInt(easyWords.length)];
-            case MEDIUM -> mediumWords[random.nextInt(mediumWords.length)];
-            case HARD -> hardWords[random.nextInt(hardWords.length)];
+            case EASY -> englishEasyWords[random.nextInt(englishEasyWords.length)];
+            case MEDIUM -> englishMediumWords[random.nextInt(englishMediumWords.length)];
+            case HARD -> englishHardWords[random.nextInt(englishHardWords.length)];
+        };
+    }
+
+    public String getRussianRandomWord(Level level){
+        Random random = new Random();
+        return switch (level) {
+            case EASY -> russianEasyWords[random.nextInt(russianEasyWords.length)];
+            case MEDIUM -> russianMediumWords[random.nextInt(russianMediumWords.length)];
+            case HARD -> russianHardWords[random.nextInt(russianHardWords.length)];
         };
     }
 
