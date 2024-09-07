@@ -34,5 +34,9 @@ public class ConsoleDisplay {
         stream.println("Укажите номер категории: ");
     }
 
+    public void errorMessage(String message){
+        stream.println(message);
+    }
+
 
 }
