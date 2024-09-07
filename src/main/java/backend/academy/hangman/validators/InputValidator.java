@@ -10,4 +10,8 @@ public class InputValidator {
     public static boolean isRussianLetter(char t){
         return (t >= 'а' && t <= 'я') || (t >= 'А' && t <= 'Я') || t == 'ё' || t == 'Ё';
     }
+    public static boolean isNumberLevel(String t){
+        if (t.length() != 1) return false;
+        return t.charAt(0) >= '1' && t.charAt(0) <= '3';
+    }
 }

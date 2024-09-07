@@ -34,6 +34,15 @@ public class ConsoleDisplay {
         stream.println("Укажите номер категории: ");
     }
 
+    public void choiceLevel(){
+        stream.println();
+        stream.println("Выберите сложность игры:");
+        stream.println("1. Легко");
+        stream.println("2. Средне");
+        stream.println("3. Тяжело");
+
+    }
+
     public void errorMessage(String message){
         stream.println(message);
     }
