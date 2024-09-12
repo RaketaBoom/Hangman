@@ -7,15 +7,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Game {
-
+    private static final int MAX_ATTEMPTS = 8; // Параметр, который можно изменять. Это количество попыток в игре
     private static final int HANGMAN_PARTS = 9;
-    private static final int MAX_ATTEMPTS = 7;
+    private static final float STEP = (HANGMAN_PARTS - 1) * 1.0F / MAX_ATTEMPTS;
+
+    private float sum_steps;
     private Category category;
     private Level level;
     private InputHandler input;
     private ConsoleDisplay display;
     private Word word;
     private int currAttempt;
+
     private Set<Character> usedLetters;
 
     public Game(InputStream inputStream, PrintStream outputStream) {
@@ -49,6 +52,7 @@ public class Game {
 
         word = new Word(category.getRussianRandomWord(level));
         currAttempt = 1;
+        sum_steps = 1F;
         display.startGame();
 
         while(!isGameOver()){
@@ -75,7 +79,8 @@ public class Game {
                 display.letterGuessed(letter);
             }
             else{
-                currAttempt += HANGMAN_PARTS / MAX_ATTEMPTS;
+                sum_steps += STEP;
+                currAttempt = Math.round(sum_steps);
             }
 
         }
@@ -91,6 +96,6 @@ public class Game {
     }
 
     private boolean isGameOver(){
-        return word.isWin() || currAttempt == MAX_ATTEMPTS;
+        return word.isWin() || currAttempt == HANGMAN_PARTS;
     }
 }
