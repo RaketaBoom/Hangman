@@ -7,7 +7,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Game {
-    private final int maxAttempts = 9;
+
+    private static final int HANGMAN_PARTS = 9;
+    private static final int MAX_ATTEMPTS = 7;
     private Category category;
     private Level level;
     private InputHandler input;
@@ -23,7 +25,7 @@ public class Game {
 
     public void start() {
         usedLetters = new HashSet<>();
-        display.gameRules(maxAttempts);
+        display.gameRules(MAX_ATTEMPTS);
         boolean letLoop = true;
         while (letLoop) {
             try {
@@ -73,7 +75,7 @@ public class Game {
                 display.letterGuessed(letter);
             }
             else{
-                currAttempt++;
+                currAttempt += HANGMAN_PARTS / MAX_ATTEMPTS;
             }
 
         }
@@ -89,6 +91,6 @@ public class Game {
     }
 
     private boolean isGameOver(){
-        return word.isWin() || currAttempt == maxAttempts;
+        return word.isWin() || currAttempt == MAX_ATTEMPTS;
     }
 }
