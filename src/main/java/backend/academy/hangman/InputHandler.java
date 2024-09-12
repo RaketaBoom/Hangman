@@ -23,20 +23,36 @@ public class InputHandler {
 
     public Level getLevel(){
         String input = scanner.nextLine();
-        if(!InputValidator.isNumberLevel(input)){
+        if(!InputValidator.isNumberLevel(input) && !input.isEmpty()){
             throw new NonLevelNumberException();
         }
-        Level level = Level.fromNumber(Character.getNumericValue(input.charAt(0)));
+        Level level;
+        if(input.isEmpty())
+        {
+            level = Level.random();
+        }
+        else{
+            int value = Character.getNumericValue(input.charAt(0));
+            level = Level.fromNumber(value);
+        }
         return level;
     }
 
-    public Category getCategory() {
+    public TypeCategory getTypeCategory() {
         String input = scanner.nextLine();
-        if(!InputValidator.isNumberCategory(input)){
+        if(!InputValidator.isNumberCategory(input) && !input.isEmpty()){
             throw new NonCategoryNumberException();
         }
-        TypeCategory type = TypeCategory.fromNumber(Character.getNumericValue(input.charAt(0)));
-        return selectCategory(type);
+        TypeCategory type;
+        if(input.isEmpty())
+        {
+            type = TypeCategory.random();
+        }
+        else{
+            int value = Character.getNumericValue(input.charAt(0));
+            type = TypeCategory.fromNumber(value);
+        }
+        return type;
     }
 
     public char getLetter(){
@@ -47,7 +63,7 @@ public class InputHandler {
         return input.charAt(0);
     }
 
-    private Category selectCategory(TypeCategory typeCategory){
+    public Category getCategory(TypeCategory typeCategory){
         return switch (typeCategory){
             case ANIMAL -> new Animal();
             case COLOR -> new Color();

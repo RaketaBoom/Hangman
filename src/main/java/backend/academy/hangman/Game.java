@@ -12,6 +12,7 @@ public class Game {
     private static final float STEP = (HANGMAN_PARTS - 1) * 1.0F / MAX_ATTEMPTS;
 
     private float sum_steps;
+    private TypeCategory typeCategory;
     private Category category;
     private Level level;
     private InputHandler input;
@@ -33,7 +34,8 @@ public class Game {
         while (letLoop) {
             try {
                 display.choiceCategory();
-                category = input.getCategory();
+                typeCategory = input.getTypeCategory();
+                category = input.getCategory(typeCategory);
                 letLoop = false;
             } catch (RuntimeException e) {
                 display.errorMessage(e.getMessage());
@@ -50,9 +52,13 @@ public class Game {
             }
         }
 
+
         word = new Word(category.getRussianRandomWord(level));
         currAttempt = 1;
         sum_steps = 1F;
+        display.showCategory(typeCategory);
+        display.showLevel(level);
+
         display.startGame();
 
         while(!isGameOver()){

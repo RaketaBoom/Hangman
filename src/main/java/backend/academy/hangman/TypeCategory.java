@@ -2,6 +2,7 @@ package backend.academy.hangman;
 
 import backend.academy.hangman.exceptions.NonCategoryNumberException;
 import lombok.Getter;
+import java.util.Random;
 
 @Getter
 public enum TypeCategory {
@@ -12,6 +13,7 @@ public enum TypeCategory {
     SPORT("Спорт");
 
     private String title;
+    private static final int size = TypeCategory.values().length;
 
     TypeCategory(String title){
         this.title = title;
@@ -23,5 +25,11 @@ public enum TypeCategory {
         }
 
         return TypeCategory.values()[num - 1];
+    }
+
+    public static TypeCategory random(){
+        Random random = new Random();
+        int value = random.nextInt(size) + 1;
+        return TypeCategory.fromNumber(value);
     }
 }

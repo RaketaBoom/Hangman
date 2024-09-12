@@ -2,6 +2,7 @@ package backend.academy.hangman;
 
 import backend.academy.hangman.exceptions.NonLevelNumberException;
 import lombok.Getter;
+import java.util.Random;
 
 @Getter
 public enum Level {
@@ -10,6 +11,7 @@ public enum Level {
     HARD("Сложно");
 
     private String title;
+    private static final int size = Level.values().length;
 
     Level(String title){
         this.title = title;
@@ -19,5 +21,11 @@ public enum Level {
             throw new NonLevelNumberException();
         }
         return Level.values()[num - 1];
+    }
+
+    public static Level random(){
+        Random random = new Random();
+        int value = random.nextInt(size) + 1;
+        return Level.fromNumber(value);
     }
 }
