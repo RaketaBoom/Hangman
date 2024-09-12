@@ -10,7 +10,7 @@ public class Word {
     private char[] targetWord;
 
     public Word(String targetWord){
-        this.targetWord = targetWord.toCharArray();
+        this.targetWord = targetWord.toLowerCase().toCharArray();
         maskedWord = generateMaskedWord(targetWord);
     }
     private char[] generateMaskedWord(String word) {

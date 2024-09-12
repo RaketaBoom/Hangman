@@ -11,6 +11,7 @@ import backend.academy.hangman.exceptions.NonLevelNumberException;
 import backend.academy.hangman.exceptions.NonRussianLetterException;
 import backend.academy.hangman.validators.InputValidator;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class InputHandler {
@@ -39,7 +40,7 @@ public class InputHandler {
     }
 
     public char getLetter(){
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().toLowerCase();
         if(!InputValidator.isRussianLetter(input)){
             throw new NonRussianLetterException();
         }
