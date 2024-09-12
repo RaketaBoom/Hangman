@@ -8,6 +8,7 @@ import backend.academy.hangman.categories.impl.Fruit;
 import backend.academy.hangman.categories.impl.Sport;
 import backend.academy.hangman.exceptions.NonCategoryNumberException;
 import backend.academy.hangman.exceptions.NonLevelNumberException;
+import backend.academy.hangman.exceptions.NonRussianLetterException;
 import backend.academy.hangman.validators.InputValidator;
 import java.io.InputStream;
 import java.util.Scanner;
@@ -36,6 +37,15 @@ public class InputHandler {
         TypeCategory type = TypeCategory.fromNumber(Character.getNumericValue(input.charAt(0)));
         return selectCategory(type);
     }
+
+    public char getLetter(){
+        String input = scanner.nextLine();
+        if(!InputValidator.isRussianLetter(input)){
+            throw new NonRussianLetterException();
+        }
+        return input.charAt(0);
+    }
+
     private Category selectCategory(TypeCategory typeCategory){
         return switch (typeCategory){
             case ANIMAL -> new Animal();

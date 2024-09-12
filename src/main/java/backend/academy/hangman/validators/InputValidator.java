@@ -7,8 +7,10 @@ public class InputValidator {
         return t.charAt(0) >= '1' && t.charAt(0) <= '5';
     }
 
-    public static boolean isRussianLetter(char t){
-        return (t >= 'а' && t <= 'я') || (t >= 'А' && t <= 'Я') || t == 'ё' || t == 'Ё';
+    public static boolean isRussianLetter(String t){
+        if (t.length() != 1) return false;
+        return (t.charAt(0) >= 'а' && t.charAt(0) <= 'я') || (t.charAt(0) >= 'А' && t.charAt(0) <= 'Я')
+            || t.charAt(0) == 'ё' || t.charAt(0) == 'Ё';
     }
     public static boolean isNumberLevel(String t){
         if (t.length() != 1) return false;
