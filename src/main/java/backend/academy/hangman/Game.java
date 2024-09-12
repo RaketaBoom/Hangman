@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Game {
-    private final int maxAttempts = 8;
+    private final int maxAttempts = 9;
     private Category category;
     private Level level;
     private InputHandler input;
@@ -77,6 +77,8 @@ public class Game {
             }
 
         }
+
+        display.hangmanState(HangmanState.getState(currAttempt));
 
         if(word.isWin()){
             display.win();
