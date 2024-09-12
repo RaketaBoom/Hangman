@@ -68,6 +68,7 @@ public class Game {
                     display.errorMessage(e.getMessage());
                 }
             }
+            usedLetters.add(letter);
             if(word.tryGuess(letter)){
                 display.letterGuessed(letter);
             }
