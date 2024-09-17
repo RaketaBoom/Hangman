@@ -95,6 +95,7 @@ public enum HangmanState {
          |______
         """
     );
+    private static final int NUMBER_OF_STATES = 9;
     private String image;
 
     HangmanState(String image) {
@@ -102,9 +103,9 @@ public enum HangmanState {
     }
 
     public static HangmanState getState(int i) {
-        if (i < 1 || i > 9){
+        if (i < 1 || i > NUMBER_OF_STATES) {
             throw new InvalidHangmanStateException();
         }
-        return HangmanState.values()[i-1];
+        return HangmanState.values()[i - 1];
     }
 }

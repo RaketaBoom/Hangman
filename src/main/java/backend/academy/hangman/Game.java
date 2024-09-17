@@ -11,7 +11,7 @@ public class Game {
     private static final int HANGMAN_PARTS = 9;
     private static final float STEP = (HANGMAN_PARTS - 1) * 1.0F / MAX_ATTEMPTS;
 
-    private float sum_steps;
+    private float sumSteps;
     private TypeCategory typeCategory;
     private Category category;
     private Level level;
@@ -54,7 +54,7 @@ public class Game {
 
         word = new Word(category.getRussianRandomWord(level));
         currAttempt = 1;
-        sum_steps = 1F;
+        sumSteps = 1F;
         display.showCategory(typeCategory);
         display.showLevel(level);
 
@@ -83,8 +83,8 @@ public class Game {
             if (word.tryGuess(letter)) {
                 display.letterGuessed(letter);
             } else {
-                sum_steps += STEP;
-                currAttempt = Math.round(sum_steps);
+                sumSteps += STEP;
+                currAttempt = Math.round(sumSteps);
             }
 
         }
