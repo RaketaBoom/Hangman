@@ -102,17 +102,9 @@ public enum HangmanState {
     }
 
     public static HangmanState getState(int i) {
-        return switch (i) {
-            case 1 -> STATE_1;
-            case 2 -> STATE_2;
-            case 3 -> STATE_3;
-            case 4 -> STATE_4;
-            case 5 -> STATE_5;
-            case 6 -> STATE_6;
-            case 7 -> STATE_7;
-            case 8 -> STATE_8;
-            case 9 -> STATE_9;
-            default -> throw new InvalidHangmanStateException();
-        };
+        if (i < 1 || i > 9){
+            throw new InvalidHangmanStateException();
+        }
+        return HangmanState.values()[i-1];
     }
 }

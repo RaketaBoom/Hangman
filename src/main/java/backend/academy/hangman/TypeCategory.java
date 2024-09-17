@@ -13,7 +13,7 @@ public enum TypeCategory {
     SPORT("Спорт");
 
     private String title;
-    private static final int size = TypeCategory.values().length;
+    private static final int SIZE = TypeCategory.values().length;
 
     TypeCategory(String title) {
         this.title = title;
@@ -29,7 +29,7 @@ public enum TypeCategory {
 
     public static TypeCategory random() {
         Random random = new Random();
-        int value = random.nextInt(size) + 1;
+        int value = random.nextInt(SIZE) + 1;
         return TypeCategory.fromNumber(value);
     }
 }

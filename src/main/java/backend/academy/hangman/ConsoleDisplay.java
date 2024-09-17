@@ -62,8 +62,8 @@ public class ConsoleDisplay {
     public void usedLetters(Set<Character> letters) {
         stream.println();
         stream.print("Вы использовали следующие буквы: ");
-        letters.
-            forEach(letter -> stream.print(letter + ", "));
+        letters
+            .forEach(letter -> stream.print(letter + ", "));
     }
 
     public void maskedWord(char[] word) {
