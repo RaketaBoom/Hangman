@@ -1,6 +1,6 @@
 package backend.academy.hangman;
 
-public class Start {
+public final class Start {
     private Start(){}
 
     public static void main(String[] args) {
