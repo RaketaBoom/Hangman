@@ -11,7 +11,6 @@ import backend.academy.hangman.exceptions.NonLevelNumberException;
 import backend.academy.hangman.exceptions.NonRussianLetterException;
 import backend.academy.hangman.validators.InputValidator;
 import java.io.InputStream;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class InputHandler {
@@ -21,17 +20,15 @@ public class InputHandler {
         scanner = new Scanner(inputStream);
     }
 
-    public Level getLevel(){
+    public Level getLevel() {
         String input = scanner.nextLine();
-        if(!InputValidator.isNumberLevel(input) && !input.isEmpty()){
+        if (!InputValidator.isNumberLevel(input) && !input.isEmpty()) {
             throw new NonLevelNumberException();
         }
         Level level;
-        if(input.isEmpty())
-        {
+        if (input.isEmpty()) {
             level = Level.random();
-        }
-        else{
+        } else {
             int value = Character.getNumericValue(input.charAt(0));
             level = Level.fromNumber(value);
         }
@@ -40,31 +37,29 @@ public class InputHandler {
 
     public TypeCategory getTypeCategory() {
         String input = scanner.nextLine();
-        if(!InputValidator.isNumberCategory(input) && !input.isEmpty()){
+        if (!InputValidator.isNumberCategory(input) && !input.isEmpty()) {
             throw new NonCategoryNumberException();
         }
         TypeCategory type;
-        if(input.isEmpty())
-        {
+        if (input.isEmpty()) {
             type = TypeCategory.random();
-        }
-        else{
+        } else {
             int value = Character.getNumericValue(input.charAt(0));
             type = TypeCategory.fromNumber(value);
         }
         return type;
     }
 
-    public char getLetter(){
+    public char getLetter() {
         String input = scanner.nextLine().toLowerCase();
-        if(!InputValidator.isRussianLetter(input)){
+        if (!InputValidator.isRussianLetter(input)) {
             throw new NonRussianLetterException();
         }
         return input.charAt(0);
     }
 
-    public Category getCategory(TypeCategory typeCategory){
-        return switch (typeCategory){
+    public Category getCategory(TypeCategory typeCategory) {
+        return switch (typeCategory) {
             case ANIMAL -> new Animal();
             case COLOR -> new Color();
             case COUNTRY -> new Country();

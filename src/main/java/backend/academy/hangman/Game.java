@@ -52,7 +52,6 @@ public class Game {
             }
         }
 
-
         word = new Word(category.getRussianRandomWord(level));
         currAttempt = 1;
         sum_steps = 1F;
@@ -61,30 +60,29 @@ public class Game {
 
         display.startGame();
 
-        while(!isGameOver()){
+        while (!isGameOver()) {
             display.hangmanState(HangmanState.getState(currAttempt));
             display.usedLetters(usedLetters);
             display.maskedWord(word.maskedWord());
             letLoop = true;
             char letter = 'r'; // хз как обойти этот костыль, чтобы не инициализиоровать сразу
-            while(letLoop) {
-                try{
+            while (letLoop) {
+                try {
                     display.enterLetter();
                     letter = input.getLetter();
-                    if(usedLetters.contains(letter)){
+                    if (usedLetters.contains(letter)) {
                         display.usedLetter();
                         continue;
                     }
                     letLoop = false;
-                }catch (RuntimeException e){
+                } catch (RuntimeException e) {
                     display.errorMessage(e.getMessage());
                 }
             }
             usedLetters.add(letter);
-            if(word.tryGuess(letter)){
+            if (word.tryGuess(letter)) {
                 display.letterGuessed(letter);
-            }
-            else{
+            } else {
                 sum_steps += STEP;
                 currAttempt = Math.round(sum_steps);
             }
@@ -93,15 +91,14 @@ public class Game {
 
         display.hangmanState(HangmanState.getState(currAttempt));
 
-        if(word.isWin()){
+        if (word.isWin()) {
             display.win();
-        }
-        else{
+        } else {
             display.lose();
         }
     }
 
-    private boolean isGameOver(){
+    private boolean isGameOver() {
         return word.isWin() || currAttempt == HANGMAN_PARTS;
     }
 }

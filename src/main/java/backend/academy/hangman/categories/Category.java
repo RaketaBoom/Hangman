@@ -12,7 +12,7 @@ public abstract class Category {
     protected static String[] russianMediumWords;
     protected static String[] russianHardWords;
 
-    public String getEnglishRandomWord(Level level){
+    public String getEnglishRandomWord(Level level) {
         Random random = new Random();
         return switch (level) {
             case EASY -> englishEasyWords[random.nextInt(englishEasyWords.length)];
@@ -21,7 +21,7 @@ public abstract class Category {
         };
     }
 
-    public String getRussianRandomWord(Level level){
+    public String getRussianRandomWord(Level level) {
         Random random = new Random();
         return switch (level) {
             case EASY -> russianEasyWords[random.nextInt(russianEasyWords.length)];

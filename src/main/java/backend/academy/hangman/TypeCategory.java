@@ -1,8 +1,8 @@
 package backend.academy.hangman;
 
 import backend.academy.hangman.exceptions.NonCategoryNumberException;
-import lombok.Getter;
 import java.util.Random;
+import lombok.Getter;
 
 @Getter
 public enum TypeCategory {
@@ -15,19 +15,19 @@ public enum TypeCategory {
     private String title;
     private static final int size = TypeCategory.values().length;
 
-    TypeCategory(String title){
+    TypeCategory(String title) {
         this.title = title;
     }
 
-    public static TypeCategory fromNumber(int num){
-        if(num < 1 || num > TypeCategory.values().length){
+    public static TypeCategory fromNumber(int num) {
+        if (num < 1 || num > TypeCategory.values().length) {
             throw new NonCategoryNumberException();
         }
 
         return TypeCategory.values()[num - 1];
     }
 
-    public static TypeCategory random(){
+    public static TypeCategory random() {
         Random random = new Random();
         int value = random.nextInt(size) + 1;
         return TypeCategory.fromNumber(value);

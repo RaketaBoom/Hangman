@@ -1,8 +1,9 @@
 package backend.academy.hangman.exceptions;
 
-public class NonRussianLetterException extends RuntimeException{
+public class NonRussianLetterException extends RuntimeException {
     private static final String MESSAGE = "Символ не является буквой русского алфавита";
-    public NonRussianLetterException(){
+
+    public NonRussianLetterException() {
         super(MESSAGE);
     }
 }
