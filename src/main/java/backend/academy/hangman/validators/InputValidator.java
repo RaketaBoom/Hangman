@@ -1,6 +1,6 @@
 package backend.academy.hangman.validators;
 
-public class InputValidator {
+public final class InputValidator {
     private InputValidator() {
     }
 

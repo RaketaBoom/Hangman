@@ -16,18 +16,18 @@ public class Animal extends Category {
             "Lobster", "Panda", "Cheetah", "Penguin", "Giraffe"
         };
         englishHardWords = new String[] {
-            "Elephant", "Giraffe", "Kangaroo", "Rhinoceros", "Alligator",
+            "Elephant", "Kangaroo", "Rhinoceros", "Alligator",
             "Chimpanzee", "Ostrich", "Gorilla", "Armadillo", "Crocodile",
             "Hippopotamus", "Orangutan"
         };
         russianEasyWords = new String[] {
             "Кот", "Пёс", "Лев", "Волк", "Сова",
-            "Еж", "Тигр", "Заяц", "Лось", "Краб",
+            "Еж", "Тигр", "Заяц", "Краб",
             "Лось", "Гусь", "Мед"
         };
 
         russianMediumWords = new String[] {
-            "Бобр", "Осёл", "Лиса", "Гусь", "Панда",
+            "Бобр", "Осёл", "Лиса", "Панда",
             "Попугай", "Кролик", "Ягуар", "Лосось",
             "Бизон", "Тунец", "Пингвин", "Зебра"
         };

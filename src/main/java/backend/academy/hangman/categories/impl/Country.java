@@ -7,7 +7,7 @@ public class Country extends Category {
     static {
         englishEasyWords = new String[] {
             "India", "China", "Japan", "Italy",
-            "Spain", "Nepal", "Canada",
+            "Spain", "Nepal",
             "Chile", "Peru", "Iraq", "Qatar", "Oman"
         };
         englishMediumWords = new String[] {
