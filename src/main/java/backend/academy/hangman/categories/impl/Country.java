@@ -5,21 +5,6 @@ import backend.academy.hangman.categories.Category;
 public class Country extends Category {
 
     static {
-        englishEasyWords = new String[] {
-            "India", "China", "Japan", "Italy",
-            "Spain", "Nepal",
-            "Chile", "Peru", "Iraq", "Qatar", "Oman"
-        };
-        englishMediumWords = new String[] {
-            "Canada", "France", "Greece", "Denmark",
-            "Thailand", "Germany", "Portugal", "Poland", "Morocco",
-            "Hungary", "Pakistan", "Croatia", "Belgium"
-        };
-        englishHardWords = new String[] {
-            "Liechtenstein", "Czechia", "San Marino", "Guinea-Bissau", "Turkmenistan",
-            "Mozambique", "Bosnia and Herzegovina", "North Macedonia", "Kyrgyzstan", "Vatican",
-            "Papua New Guinea", "Tajikistan", "Brunei"
-        };
         russianEasyWords = new String[] {
             "Индия", "Китай", "Чили", "Перу", "Ливан",
             "Оман", "Иран", "Катар", "Канада", "Гана",
