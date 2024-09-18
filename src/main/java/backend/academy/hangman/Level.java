@@ -17,7 +17,7 @@ public enum Level {
         this.title = title;
     }
 
-    public static Level fromNumber(int num) {
+    public static Level valueOf(int num) {
         if (num < 1 || num > Level.values().length) {
             throw new NonLevelNumberException();
         }
@@ -27,6 +27,6 @@ public enum Level {
     public static Level random() {
         Random random = new Random();
         int value = random.nextInt(SIZE) + 1;
-        return Level.fromNumber(value);
+        return Level.valueOf(value);
     }
 }

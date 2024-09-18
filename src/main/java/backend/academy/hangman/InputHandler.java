@@ -30,7 +30,7 @@ public class InputHandler {
             level = Level.random();
         } else {
             int value = Character.getNumericValue(input.charAt(0));
-            level = Level.fromNumber(value);
+            level = Level.valueOf(value);
         }
         return level;
     }
@@ -45,7 +45,7 @@ public class InputHandler {
             type = TypeCategory.random();
         } else {
             int value = Character.getNumericValue(input.charAt(0));
-            type = TypeCategory.fromNumber(value);
+            type = TypeCategory.valueOf(value);
         }
         return type;
     }

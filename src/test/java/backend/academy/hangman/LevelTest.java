@@ -11,13 +11,13 @@ class LevelTest {
     void testFromNumberInBounds() {
         int num = 2;
 
-        assertEquals(Level.MEDIUM, Level.fromNumber(num));
+        assertEquals(Level.MEDIUM, Level.valueOf(num));
     }
 
     @Test
     void testFromNumberOutOfBounds() {
         int num = 0;
 
-        assertThrows(NonLevelNumberException.class, () -> Level.fromNumber(num));
+        assertThrows(NonLevelNumberException.class, () -> Level.valueOf(num));
     }
 }

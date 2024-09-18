@@ -19,7 +19,7 @@ public enum TypeCategory {
         this.title = title;
     }
 
-    public static TypeCategory fromNumber(int num) {
+    public static TypeCategory valueOf(int num) {
         if (num < 1 || num > TypeCategory.values().length) {
             throw new NonCategoryNumberException();
         }
@@ -30,6 +30,6 @@ public enum TypeCategory {
     public static TypeCategory random() {
         Random random = new Random();
         int value = random.nextInt(SIZE) + 1;
-        return TypeCategory.fromNumber(value);
+        return TypeCategory.valueOf(value);
     }
 }
