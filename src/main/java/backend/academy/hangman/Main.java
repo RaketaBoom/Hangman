@@ -1,7 +1,7 @@
 package backend.academy.hangman;
 
-public final class Start {
-    private Start() {
+public final class Main {
+    private Main() {
     }
 
     /**
@@ -9,7 +9,7 @@ public final class Start {
      * It creates an instance of the Game and starts it.
      */
     public static void main(String[] args) { //The Start class is the entry point of the Hangman game.
-        Game game = new Game(System.in, System.out);//It creates an instance of the Game and starts it.
+        Game game = new Game(System.in, System.out); //It creates an instance of the Game and starts it.
         game.start();
     }
 }
