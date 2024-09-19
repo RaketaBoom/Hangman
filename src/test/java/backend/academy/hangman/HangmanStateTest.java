@@ -23,7 +23,7 @@ class HangmanStateTest {
         HangmanState actualState = HangmanState.getState(i);
 
         HangmanState expectedState = HangmanState.STATE_1;
-        assertEquals(actualState, expectedState);
+        assertEquals(expectedState, actualState);
     }
 
     @Test
@@ -33,7 +33,7 @@ class HangmanStateTest {
         HangmanState actualState = HangmanState.getState(i);
 
         HangmanState expectedState = HangmanState.STATE_3;
-        assertEquals(actualState, expectedState);
+        assertEquals(expectedState, actualState);
     }
 
     @Test
@@ -43,6 +43,6 @@ class HangmanStateTest {
         HangmanState actualState = HangmanState.getState(i);
 
         HangmanState expectedState = HangmanState.STATE_9;
-        assertEquals(actualState, expectedState);
+        assertEquals(expectedState, actualState);
     }
 }

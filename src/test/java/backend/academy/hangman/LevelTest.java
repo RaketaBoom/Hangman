@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class LevelTest {
 
     @Test
-    void testFromNumberInBounds() {
+    void testValueOfInBounds() {
         int num = 2;
 
         assertEquals(Level.MEDIUM, Level.valueOf(num));
     }
 
     @Test
-    void testFromNumberOutOfBounds() {
+    void testValueOfOutOfBounds() {
         int num = 0;
 
         assertThrows(NonLevelNumberException.class, () -> Level.valueOf(num));
