@@ -1,7 +1,7 @@
 package backend.academy.hangman;
 
 import java.io.PrintStream;
-import java.util.Set;
+import java.util.*;
 
 public class ConsoleDisplay {
     private PrintStream stream;
@@ -91,14 +91,16 @@ public class ConsoleDisplay {
         stream.println("Вы угадали букву: " + t);
     }
 
-    public void win() {
+    public void win(char[] word) {
         stream.println();
         stream.println("Победа!");
+        stream.println("Вы угадали слово: " + String.valueOf(word));
     }
 
-    public void lose() {
+    public void lose(char[] word) {
         stream.println();
         stream.println("Поражение!");
+        stream.println("Вы не угадали слово: " + String.valueOf(word));
     }
 
     public void errorMessage(String message) {

@@ -93,9 +93,9 @@ public class Game {
         display.hangmanState(HangmanState.getState(currAttempt));
 
         if (word.isWin()) {
-            display.win();
+            display.win(word.targetWord());
         } else {
-            display.lose();
+            display.lose(word.targetWord());
         }
     }
 
