@@ -10,14 +10,13 @@ import backend.academy.hangman.exceptions.NonCategoryNumberException;
 import backend.academy.hangman.exceptions.NonLevelNumberException;
 import backend.academy.hangman.exceptions.NonRussianLetterException;
 import backend.academy.hangman.validators.InputValidator;
-import java.io.InputStream;
 import java.util.Scanner;
 
 public class InputHandler {
     private Scanner scanner;
 
-    public InputHandler(InputStream inputStream) {
-        scanner = new Scanner(inputStream);
+    public InputHandler(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public Level getLevel() {

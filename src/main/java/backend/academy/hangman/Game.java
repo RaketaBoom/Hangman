@@ -4,6 +4,7 @@ import backend.academy.hangman.categories.Category;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Game {
@@ -23,7 +24,7 @@ public class Game {
     private Set<Character> usedLetters;
 
     public Game(InputStream inputStream, PrintStream outputStream) {
-        this.input = new InputHandler(inputStream);
+        this.input = new InputHandler(new Scanner(inputStream));
         this.display = new ConsoleDisplay(outputStream);
     }
 
