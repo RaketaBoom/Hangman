@@ -56,14 +56,4 @@ public class InputHandler {
         }
         return input.charAt(0);
     }
-
-    public Category getCategory(TypeCategory typeCategory) {
-        return switch (typeCategory) {
-            case ANIMAL -> new Animal();
-            case COLOR -> new Color();
-            case COUNTRY -> new Country();
-            case FRUIT -> new Fruit();
-            case SPORT -> new Sport();
-        };
-    }
 }

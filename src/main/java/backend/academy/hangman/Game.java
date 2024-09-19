@@ -36,7 +36,7 @@ public class Game {
             try {
                 display.choiceCategory();
                 typeCategory = input.getTypeCategory();
-                category = input.getCategory(typeCategory);
+                category = Category.getCategory(typeCategory);
                 letLoop = false;
             } catch (RuntimeException e) {
                 display.errorMessage(e.getMessage());
