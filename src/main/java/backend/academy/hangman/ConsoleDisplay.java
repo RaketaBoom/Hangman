@@ -1,7 +1,7 @@
 package backend.academy.hangman;
 
 import java.io.PrintStream;
-import java.util.*;
+import java.util.Set;
 
 public class ConsoleDisplay {
     private PrintStream stream;

@@ -1,7 +1,6 @@
 package backend.academy.hangman;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public class Word {

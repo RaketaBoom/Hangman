@@ -1,11 +1,5 @@
 package backend.academy.hangman;
 
-import backend.academy.hangman.categories.Category;
-import backend.academy.hangman.categories.impl.Animal;
-import backend.academy.hangman.categories.impl.Color;
-import backend.academy.hangman.categories.impl.Country;
-import backend.academy.hangman.categories.impl.Fruit;
-import backend.academy.hangman.categories.impl.Sport;
 import backend.academy.hangman.exceptions.NonCategoryNumberException;
 import backend.academy.hangman.exceptions.NonLevelNumberException;
 import backend.academy.hangman.exceptions.NonRussianLetterException;
