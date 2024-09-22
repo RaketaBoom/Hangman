@@ -34,7 +34,7 @@ public class ConsoleDisplay {
         stream.printf("Укажите номер категории: %n");
     }
 
-    public void showCategory(TypeCategory category) {
+    public void category(TypeCategory category) {
         stream.printf("%nВыбрана категория: %s%n", category.title());
     }
 
@@ -45,7 +45,7 @@ public class ConsoleDisplay {
         stream.printf("3. Тяжело%n");
     }
 
-    public void showLevel(Level level) {
+    public void level(Level level) {
         stream.printf("%nВыбран уровень сложности: %s%n", level.title());
     }
 
@@ -66,7 +66,7 @@ public class ConsoleDisplay {
         stream.printf("%n%s%n", state.image());
     }
 
-    public void showHint(String text) {
+    public void hint(String text) {
         stream.printf("%nПодсказка: %s%n", text);
     }
 
