@@ -67,7 +67,7 @@ class WordTest {
             true,
             true
         };
-        char[] expectedMaskedWord = "такси".toCharArray();
+        char[] expectedMaskedWord = "Такси".toCharArray();
         assertArrayEquals(expectedMaskedWord, actualMaskedWord);
         assertArrayEquals(expectedResults, actualResults);
     }
