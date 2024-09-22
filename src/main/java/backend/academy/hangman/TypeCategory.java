@@ -12,8 +12,8 @@ public enum TypeCategory {
     FRUIT("Фрукты"),
     SPORT("Спорт");
 
-    private String title;
     private static final int SIZE = TypeCategory.values().length;
+    private final String title;
 
     TypeCategory(String title) {
         this.title = title;

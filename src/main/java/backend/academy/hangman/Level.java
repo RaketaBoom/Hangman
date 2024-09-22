@@ -10,8 +10,9 @@ public enum Level {
     MEDIUM("Средне"),
     HARD("Сложно");
 
-    private String title;
     private static final int SIZE = Level.values().length;
+
+    private final String title;
 
     Level(String title) {
         this.title = title;

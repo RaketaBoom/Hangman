@@ -95,8 +95,9 @@ public enum HangmanState {
          |______
         """
     );
-    private static final int NUMBER_OF_STATES = 9;
-    private String image;
+    private static final int NUMBER_OF_STATES = HangmanState.values().length;
+
+    private final String image;
 
     HangmanState(String image) {
         this.image = image;
