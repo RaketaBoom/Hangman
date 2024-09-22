@@ -1,9 +1,10 @@
 package backend.academy.hangman.validators;
 
-public final class InputValidator {
-    private InputValidator() {
-    }
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class InputValidator {
     public static boolean isNumberCategory(String t) {
         if (t.length() != 1) {
             return false;
