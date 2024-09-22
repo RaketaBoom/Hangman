@@ -9,9 +9,9 @@ import java.util.Set;
 
 public class Game {
     private static final int MAX_ATTEMPTS = 8; // Параметр, который можно изменять. Это количество попыток в игре
+    private static final int ATTEMPTS_WITHOUT_HINT = 7; // Тоже можно менять. Число попыток без подсказки.
     private static final int HANGMAN_PARTS = 9;
     private static final float STEP = (HANGMAN_PARTS - 1) * 1.0F / MAX_ATTEMPTS;
-
     private float sumSteps;
     private TypeCategory typeCategory;
     private Category category;
@@ -30,13 +30,12 @@ public class Game {
 
     public void start() {
         usedLetters = new HashSet<>();
-        display.gameRules(MAX_ATTEMPTS);
+        display.gameRules(MAX_ATTEMPTS, ATTEMPTS_WITHOUT_HINT);
         boolean letLoop = true;
         while (letLoop) {
             try {
                 display.choiceCategory();
                 typeCategory = input.getTypeCategory();
-                category = Category.getCategory(typeCategory);
                 letLoop = false;
             } catch (RuntimeException e) {
                 display.errorMessage(e.getMessage());
@@ -53,7 +52,9 @@ public class Game {
             }
         }
 
-        word = new Word(category.getRussianRandomWord(level));
+        category = Category.initializeCategory(typeCategory, level);
+
+        word = category.getRandomWord();
         currAttempt = 1;
         sumSteps = 1F;
         display.showCategory(typeCategory);
@@ -65,8 +66,11 @@ public class Game {
             display.hangmanState(HangmanState.getState(currAttempt));
             display.usedLetters(usedLetters);
             display.maskedWord(word.maskedWord());
+            if (currAttempt > ATTEMPTS_WITHOUT_HINT) {
+                display.showHint(word.hint());
+            }
             letLoop = true;
-            char letter = 'r'; // хз как обойти этот костыль, чтобы не инициализиоровать сразу
+            char letter = 'r';
             while (letLoop) {
                 try {
                     display.enterLetter();
@@ -93,9 +97,9 @@ public class Game {
         display.hangmanState(HangmanState.getState(currAttempt));
 
         if (word.isWin()) {
-            display.win(word.targetWord());
+            display.win(word.modelWord());
         } else {
-            display.lose(word.targetWord());
+            display.lose(word.modelWord());
         }
     }
 
