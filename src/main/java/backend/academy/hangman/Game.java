@@ -1,6 +1,7 @@
 package backend.academy.hangman;
 
 import backend.academy.hangman.categories.Category;
+import backend.academy.hangman.exceptions.IllegalAttemptsException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashSet;
@@ -12,14 +13,17 @@ public class Game {
     private static final int ATTEMPTS_WITHOUT_HINT = 7; // Тоже можно менять. Число попыток без подсказки.
     private static final int HANGMAN_PARTS = 9;
     private static final float STEP = (HANGMAN_PARTS - 1) * 1.0F / MAX_ATTEMPTS;
+
     private float sumSteps;
+    private int currAttempt;
+
+    private InputHandler input;
+    private ConsoleDisplay display;
+
     private TypeCategory typeCategory;
     private Category category;
     private Level level;
-    private InputHandler input;
-    private ConsoleDisplay display;
     private Word word;
-    private int currAttempt;
 
     private Set<Character> usedLetters;
 
@@ -29,6 +33,13 @@ public class Game {
     }
 
     public void start() {
+        try {
+            checkMaxAttempts();
+        } catch (RuntimeException e) {
+            display.errorMessage(e.getMessage());
+            return;
+        }
+
         usedLetters = new HashSet<>();
         display.gameRules(MAX_ATTEMPTS, ATTEMPTS_WITHOUT_HINT);
         boolean letLoop = true;
@@ -57,8 +68,8 @@ public class Game {
         word = category.getRandomWord();
         currAttempt = 1;
         sumSteps = 1F;
-        display.showCategory(typeCategory);
-        display.showLevel(level);
+        display.category(typeCategory);
+        display.level(level);
 
         display.startGame();
 
@@ -67,7 +78,7 @@ public class Game {
             display.usedLetters(usedLetters);
             display.maskedWord(word.maskedWord());
             if (currAttempt > ATTEMPTS_WITHOUT_HINT) {
-                display.showHint(word.hint());
+                display.hint(word.hint());
             }
             letLoop = true;
             char letter = 'r';
@@ -105,5 +116,11 @@ public class Game {
 
     private boolean isGameOver() {
         return word.isWin() || currAttempt == HANGMAN_PARTS;
+    }
+
+    private void checkMaxAttempts() {
+        if (MAX_ATTEMPTS <= 0) {
+            throw new IllegalAttemptsException();
+        }
     }
 }
