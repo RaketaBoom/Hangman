@@ -18,14 +18,13 @@ public class InputHandler {
         if (!InputValidator.isNumberLevel(input) && !input.isEmpty()) {
             throw new NonLevelNumberException();
         }
-        Level level;
+
         if (input.isEmpty()) {
-            level = Level.random();
-        } else {
-            int value = Character.getNumericValue(input.charAt(0));
-            level = Level.valueOf(value);
+            return Level.random();
         }
-        return level;
+        int value = Character.getNumericValue(input.charAt(0));
+
+        return Level.valueOf(value);
     }
 
     public TypeCategory getTypeCategory() {
@@ -33,14 +32,13 @@ public class InputHandler {
         if (!InputValidator.isNumberCategory(input) && !input.isEmpty()) {
             throw new NonCategoryNumberException();
         }
-        TypeCategory type;
+
         if (input.isEmpty()) {
-            type = TypeCategory.random();
-        } else {
-            int value = Character.getNumericValue(input.charAt(0));
-            type = TypeCategory.valueOf(value);
+            return TypeCategory.random();
         }
-        return type;
+        int value = Character.getNumericValue(input.charAt(0));
+
+        return TypeCategory.valueOf(value);
     }
 
     public char getLetter() {
