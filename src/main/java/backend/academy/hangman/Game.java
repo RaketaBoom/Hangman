@@ -40,37 +40,20 @@ public class Game {
             return;
         }
 
-        usedLetters = new HashSet<>();
         display.gameRules(MAX_ATTEMPTS, ATTEMPTS_WITHOUT_HINT);
-        boolean letLoop = true;
-        while (letLoop) {
-            try {
-                display.choiceCategory();
-                typeCategory = input.getTypeCategory();
-                letLoop = false;
-            } catch (RuntimeException e) {
-                display.errorMessage(e.getMessage());
-            }
-        }
-        letLoop = true;
-        while (letLoop) {
-            try {
-                display.choiceLevel();
-                level = input.getLevel();
-                letLoop = false;
-            } catch (RuntimeException e) {
-                display.errorMessage(e.getMessage());
-            }
-        }
+
+        typeCategory = requestTypeCategory();
+
+        level = requestLevel();
 
         category = Category.initializeCategory(typeCategory, level);
-
         word = category.getRandomWord();
         currAttempt = 1;
         sumSteps = 1F;
+        usedLetters = new HashSet<>();
+
         display.category(typeCategory);
         display.level(level);
-
         display.startGame();
 
         while (!isGameOver()) {
@@ -80,21 +63,9 @@ public class Game {
             if (currAttempt > ATTEMPTS_WITHOUT_HINT) {
                 display.hint(word.hint());
             }
-            letLoop = true;
-            char letter = 'r';
-            while (letLoop) {
-                try {
-                    display.enterLetter();
-                    letter = input.getLetter();
-                    if (usedLetters.contains(letter)) {
-                        display.usedLetter();
-                        continue;
-                    }
-                    letLoop = false;
-                } catch (RuntimeException e) {
-                    display.errorMessage(e.getMessage());
-                }
-            }
+
+            char letter = requestLetter();
+
             usedLetters.add(letter);
             if (word.tryGuess(letter)) {
                 display.letterGuessed(letter);
@@ -111,6 +82,46 @@ public class Game {
             display.win(word.modelWord());
         } else {
             display.lose(word.modelWord());
+        }
+    }
+
+    private char requestLetter() {
+        while (true) {
+            try {
+                display.enterLetter();
+                char letter = input.getLetter();
+                if (usedLetters.contains(letter)) {
+                    display.usedLetter();
+                    continue;
+                }
+                return letter;
+            } catch (RuntimeException e) {
+                display.errorMessage(e.getMessage());
+            }
+        }
+    }
+
+    private Level requestLevel() {
+        while (true) {
+            try {
+                display.choiceLevel();
+                level = input.getLevel();
+                return level;
+            } catch (RuntimeException e) {
+                display.errorMessage(e.getMessage());
+            }
+        }
+    }
+
+    private TypeCategory requestTypeCategory() {
+        while (true) {
+            try {
+                display.choiceCategory();
+                typeCategory = input.getTypeCategory();
+                return typeCategory;
+            } catch (RuntimeException e) {
+                display.errorMessage(e.getMessage());
+            }
         }
     }
 
