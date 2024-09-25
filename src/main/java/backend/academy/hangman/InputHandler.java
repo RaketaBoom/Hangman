@@ -7,7 +7,7 @@ import backend.academy.hangman.validators.InputValidator;
 import java.util.Scanner;
 
 public class InputHandler {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public InputHandler(Scanner scanner) {
         this.scanner = scanner;

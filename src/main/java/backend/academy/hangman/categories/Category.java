@@ -12,17 +12,18 @@ import java.util.Map;
 import java.util.Random;
 
 public class Category {
-    private Level level;
+    private final Random random;
+    private final Level level;
     protected static Map<String, String> easyWordsAndHints;
     protected static Map<String, String> mediumWordsAndHints;
     protected static Map<String, String> hardWordsAndHints;
 
-    public Category(Level level) {
+    public Category(Level level, Random random) {
         this.level = level;
+        this.random = random;
     }
 
     public Word getRandomWord() {
-        Random random = new Random();
         return switch (level) {
             case EASY -> createEasyWord(random);
             case MEDIUM -> createMediumWord(random);
@@ -30,13 +31,13 @@ public class Category {
         };
     }
 
-    public static Category initializeCategory(TypeCategory typeCategory, Level level) {
+    public static Category initializeCategory(TypeCategory typeCategory, Level level, Random random) {
         return switch (typeCategory) {
-            case ANIMAL -> new Animal(level);
-            case COLOR -> new Color(level);
-            case COUNTRY -> new Country(level);
-            case FRUIT -> new Fruit(level);
-            case SPORT -> new Sport(level);
+            case ANIMAL -> new Animal(level, random);
+            case COLOR -> new Color(level, random);
+            case COUNTRY -> new Country(level, random);
+            case FRUIT -> new Fruit(level, random);
+            case SPORT -> new Sport(level, random);
         };
     }
 

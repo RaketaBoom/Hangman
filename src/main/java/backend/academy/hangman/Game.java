@@ -5,6 +5,7 @@ import backend.academy.hangman.exceptions.IllegalAttemptsException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -14,14 +15,12 @@ public class Game {
     private static final int HANGMAN_PARTS = 9;
     private static final float STEP = (HANGMAN_PARTS - 1) * 1.0F / MAX_ATTEMPTS;
 
-    private float sumSteps;
     private int currAttempt;
 
-    private InputHandler input;
-    private ConsoleDisplay display;
-
+    private final InputHandler input;
+    private final ConsoleDisplay display;
+    private final Random random = new Random();
     private TypeCategory typeCategory;
-    private Category category;
     private Level level;
     private Word word;
 
@@ -46,10 +45,10 @@ public class Game {
 
         level = requestLevel();
 
-        category = Category.initializeCategory(typeCategory, level);
+        Category category = Category.initializeCategory(typeCategory, level, random);
+        float sumSteps = 1F;
         word = category.getRandomWord();
         currAttempt = 1;
-        sumSteps = 1F;
         usedLetters = new HashSet<>();
 
         display.category(typeCategory);

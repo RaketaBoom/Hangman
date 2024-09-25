@@ -12,6 +12,7 @@ public enum TypeCategory {
     FRUIT("Фрукты"),
     SPORT("Спорт");
 
+    private static final Random random = new Random();
     private static final int SIZE = TypeCategory.values().length;
     private final String title;
 
@@ -28,7 +29,6 @@ public enum TypeCategory {
     }
 
     public static TypeCategory random() {
-        Random random = new Random();
         int value = random.nextInt(SIZE) + 1;
         return TypeCategory.valueOf(value);
     }

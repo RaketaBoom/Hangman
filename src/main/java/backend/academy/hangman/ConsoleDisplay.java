@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.util.Set;
 
 public class ConsoleDisplay {
-    private PrintStream stream;
+    private final PrintStream stream;
 
     public ConsoleDisplay(PrintStream stream) {
         this.stream = stream;

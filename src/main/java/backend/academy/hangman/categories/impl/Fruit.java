@@ -3,12 +3,13 @@ package backend.academy.hangman.categories.impl;
 import backend.academy.hangman.Level;
 import backend.academy.hangman.categories.Category;
 import java.util.Map;
+import java.util.Random;
 import static java.util.Map.entry;
 
 public class Fruit extends Category {
 
-    public Fruit(Level level) {
-        super(level);
+    public Fruit(Level level, Random random) {
+        super(level, random);
     }
 
     static {

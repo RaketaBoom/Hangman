@@ -4,15 +4,16 @@ import lombok.Getter;
 
 @Getter
 public class Word {
-    private char[] maskedWord;
-    private char[] targetWord;
-    private String modelWord;
-    private String hint;
+    private final char[] maskedWord; // массивы char, чтобы удобно сравнивать
+    private final char[] targetWord;
+
+    private final String modelWord;
+    private final String hint;
 
     public Word(String word, String hint) {
-        targetWord = word.toLowerCase().toCharArray();
-        maskedWord = generateMaskedWord(word);
-        modelWord = word;
+        this.targetWord = word.toLowerCase().toCharArray();
+        this.maskedWord = generateMaskedWord(word);
+        this.modelWord = word;
         this.hint = hint;
     }
 
@@ -36,8 +37,8 @@ public class Word {
     }
 
     public boolean isWin() {
-        for (int i = 0; i < maskedWord.length; i++) {
-            if (maskedWord[i] == '_') {
+        for (char c : maskedWord) {
+            if (c == '_') {
                 return false;
             }
         }
