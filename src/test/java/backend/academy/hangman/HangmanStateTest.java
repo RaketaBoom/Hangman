@@ -1,23 +1,22 @@
 package backend.academy.hangman;
 
 import backend.academy.hangman.exceptions.InvalidHangmanStateException;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class HangmanStateTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, -21, 10, 232, 99})
-    void getStateForOutOfBoundsNumber(int i) {
+    void testGetStateForOutOfBoundsNumber(int i) {
         assertThrows(InvalidHangmanStateException.class, () -> HangmanState.getState(i));
     }
 
     @Test
-    void getStateForInBoundsNumber1() {
+    void testGetStateForInBoundsNumber1() {
         int i = 1;
 
         HangmanState actualState = HangmanState.getState(i);
@@ -27,7 +26,7 @@ class HangmanStateTest {
     }
 
     @Test
-    void getStateForInBoundsNumber2() {
+    void testGetStateForInBoundsNumber2() {
         int i = 3;
 
         HangmanState actualState = HangmanState.getState(i);
@@ -37,7 +36,7 @@ class HangmanStateTest {
     }
 
     @Test
-    void getStateForInBoundsNumber3() {
+    void testGetStateForInBoundsNumber3() {
         int i = 9;
 
         HangmanState actualState = HangmanState.getState(i);

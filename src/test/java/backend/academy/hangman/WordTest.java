@@ -39,7 +39,7 @@ class WordTest {
     }
 
     @Test
-    void tryGuessFailedAttempts() { // Надо проверить, что буквы угадываются и не угадываются и слово открывается
+    void testTryGuessFailedAttempts() { // Надо проверить, что буквы угадываются и не угадываются и слово открывается
         boolean[] actualResults = makeAttempts('й', 'ш', 'х', 'ь', 'ч');
         char[] actualMaskedWord = word.maskedWord();
 
@@ -56,7 +56,7 @@ class WordTest {
     }
 
     @Test
-    void tryGuessSuccessfulAttempts() {
+    void testTryGuessSuccessfulAttempts() {
         boolean[] actualResults = makeAttempts('а', 'т', 'к', 'и', 'с');
         char[] actualMaskedWord = word.maskedWord();
 
@@ -73,7 +73,7 @@ class WordTest {
     }
 
     @Test
-    void tryGuessSuccessfulAndFailedAttempts() {
+    void testTryGuessSuccessfulAndFailedAttempts() {
         boolean[] actualResults = makeAttempts('а', 'й', 'к', 'з', 'с');
         char[] actualMaskedWord = word.maskedWord();
 

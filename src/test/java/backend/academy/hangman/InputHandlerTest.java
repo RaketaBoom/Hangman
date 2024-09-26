@@ -22,7 +22,7 @@ class InputHandlerTest {
     Level[] levels = Level.values();
     TypeCategory[] typeCategories = TypeCategory.values();
     @Mock
-    Scanner scanner;
+    Scanner mockScanner;
 
     @ParameterizedTest
     @ValueSource(strings = {
@@ -32,17 +32,17 @@ class InputHandlerTest {
         "-",
         "12"
     })
-    void getLevelForException(String line) {
-        Mockito.when(scanner.nextLine()).thenReturn(line);
-        inputHandler = new InputHandler(scanner);
+    void testGetLevelForException(String line) {
+        Mockito.when(mockScanner.nextLine()).thenReturn(line);
+        inputHandler = new InputHandler(mockScanner);
 
         assertThrows(NonLevelNumberException.class, () -> inputHandler.getLevel());
     }
 
     @Test
-    void getLevelForLevelNumber() {
-        Mockito.when(scanner.nextLine()).thenReturn("2");
-        inputHandler = new InputHandler(scanner);
+    void testGetLevelForLevelNumber() {
+        Mockito.when(mockScanner.nextLine()).thenReturn("2");
+        inputHandler = new InputHandler(mockScanner);
 
         Level actualLevel = inputHandler.getLevel();
 
@@ -51,9 +51,9 @@ class InputHandlerTest {
     }
 
     @Test
-    void getLevelForRandomLevel() {
-        Mockito.when(scanner.nextLine()).thenReturn("");
-        inputHandler = new InputHandler(scanner);
+    void testGetLevelForRandomLevel() {
+        Mockito.when(mockScanner.nextLine()).thenReturn("");
+        inputHandler = new InputHandler(mockScanner);
 
         Level actualLevel = inputHandler.getLevel();
 
@@ -67,17 +67,17 @@ class InputHandlerTest {
         " ",
         "ы"
     })
-    void getTypeCategoryForException(String line) {
-        Mockito.when(scanner.nextLine()).thenReturn(line);
-        inputHandler = new InputHandler(scanner);
+    void testGetTypeCategoryForException(String line) {
+        Mockito.when(mockScanner.nextLine()).thenReturn(line);
+        inputHandler = new InputHandler(mockScanner);
 
         assertThrows(NonCategoryNumberException.class, () -> inputHandler.getTypeCategory());
     }
 
     @Test
-    void getTypeCategoryForCategoryNumber() {
-        Mockito.when(scanner.nextLine()).thenReturn("5");
-        inputHandler = new InputHandler(scanner);
+    void testGetTypeCategoryForCategoryNumber() {
+        Mockito.when(mockScanner.nextLine()).thenReturn("5");
+        inputHandler = new InputHandler(mockScanner);
 
         TypeCategory actualType = inputHandler.getTypeCategory();
 
@@ -86,9 +86,9 @@ class InputHandlerTest {
     }
 
     @Test
-    void getTypeCategoryForRandomCategory() {
-        Mockito.when(scanner.nextLine()).thenReturn("");
-        inputHandler = new InputHandler(scanner);
+    void testGetTypeCategoryForRandomCategory() {
+        Mockito.when(mockScanner.nextLine()).thenReturn("");
+        inputHandler = new InputHandler(mockScanner);
 
         TypeCategory actualType = inputHandler.getTypeCategory();
 
@@ -104,17 +104,17 @@ class InputHandlerTest {
         "",
         "12"
     })
-    void getLetterForNonRussianLetter(String line) {
-        Mockito.when(scanner.nextLine()).thenReturn(line);
-        inputHandler = new InputHandler(scanner);
+    void testGetLetterForNonRussianLetter(String line) {
+        Mockito.when(mockScanner.nextLine()).thenReturn(line);
+        inputHandler = new InputHandler(mockScanner);
 
         assertThrows(NonRussianLetterException.class, () -> inputHandler.getLetter());
     }
 
     @Test
-    void getLetterForRussianLetter() {
-        Mockito.when(scanner.nextLine()).thenReturn("ф");
-        inputHandler = new InputHandler(scanner);
+    void testGetLetterForRussianLetter() {
+        Mockito.when(mockScanner.nextLine()).thenReturn("ф");
+        inputHandler = new InputHandler(mockScanner);
 
         char actualLetter = inputHandler.getLetter();
 
