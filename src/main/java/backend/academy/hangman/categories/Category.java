@@ -10,7 +10,9 @@ import backend.academy.hangman.categories.impl.Fruit;
 import backend.academy.hangman.categories.impl.Sport;
 import java.util.Map;
 import java.util.Random;
+import lombok.Getter;
 
+@Getter
 public class Category {
     private final Random random;
     private final Level level;
