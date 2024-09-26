@@ -10,7 +10,7 @@ public enum Level {
     MEDIUM("Средне"),
     HARD("Сложно");
 
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     private static final int SIZE = Level.values().length;
 
@@ -28,7 +28,7 @@ public enum Level {
     }
 
     public static Level random() {
-        int value = random.nextInt(SIZE) + 1;
+        int value = RANDOM.nextInt(SIZE) + 1;
         return Level.valueOf(value);
     }
 }
