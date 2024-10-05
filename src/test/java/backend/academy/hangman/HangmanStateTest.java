@@ -17,31 +17,37 @@ class HangmanStateTest {
 
     @Test
     void testGetStateForInBoundsNumber1() {
+        //Arrange
         int i = 1;
 
+        //Act
         HangmanState actualState = HangmanState.getState(i);
 
-        HangmanState expectedState = HangmanState.STATE_1;
-        assertEquals(expectedState, actualState);
+        //Assert
+        assertEquals(HangmanState.STATE_1, actualState);
     }
 
     @Test
     void testGetStateForInBoundsNumber2() {
+        //Arrange
         int i = 3;
 
+        //Act
         HangmanState actualState = HangmanState.getState(i);
 
-        HangmanState expectedState = HangmanState.STATE_3;
-        assertEquals(expectedState, actualState);
+        //Assert
+        assertEquals(HangmanState.STATE_3, actualState);
     }
 
     @Test
     void testGetStateForInBoundsNumber3() {
+        //Arrange
         int i = 9;
 
+        //Act
         HangmanState actualState = HangmanState.getState(i);
 
-        HangmanState expectedState = HangmanState.STATE_9;
-        assertEquals(expectedState, actualState);
+        //Assert
+        assertEquals(HangmanState.STATE_9, actualState);
     }
 }

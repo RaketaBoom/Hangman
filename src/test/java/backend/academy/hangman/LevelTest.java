@@ -9,15 +9,22 @@ class LevelTest {
 
     @Test
     void testValueOfInBounds() {
+        //Arrange
         int num = 2;
 
-        assertEquals(Level.MEDIUM, Level.valueOf(num));
+        //Act
+        Level actualLevel = Level.valueOf(num);
+
+        //Assert
+        assertEquals(Level.MEDIUM, actualLevel);
     }
 
     @Test
     void testValueOfOutOfBounds() {
+        //Arrange
         int num = 0;
 
+        //Act && Assert
         assertThrows(NonLevelNumberException.class, () -> Level.valueOf(num));
     }
 }

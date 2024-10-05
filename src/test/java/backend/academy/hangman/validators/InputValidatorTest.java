@@ -1,11 +1,9 @@
 package backend.academy.hangman.validators;
 
-import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.lang.foreign.ValueLayout;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InputValidatorTest {
 
@@ -17,6 +15,7 @@ class InputValidatorTest {
         "лу"
     })
     void testIsNumberCategoryForNonNumber(String input) {
+        //Act && Assert
         assertFalse(InputValidator.isNumberCategory(input));
     }
 
@@ -28,6 +27,7 @@ class InputValidatorTest {
         "-2"
     })
     void testIsNumberCategoryForOutOfBoundsNumber(String input) {
+        //Act && Assert
         assertFalse(InputValidator.isNumberCategory(input));
     }
 
@@ -40,6 +40,7 @@ class InputValidatorTest {
         "5"
     })
     void testIsNumberCategoryForInBoundsNumber(String input) {
+        //Act && Assert
         assertTrue(InputValidator.isNumberCategory(input));
     }
 
@@ -52,6 +53,7 @@ class InputValidatorTest {
         "павук"
     })
     void testIsRussianLetterForNonLetter(String input) {
+        //Act && Assert
         assertFalse(InputValidator.isRussianLetter(input));
     }
 
@@ -63,6 +65,7 @@ class InputValidatorTest {
         "erw"
     })
     void testIsRussianLetterForEnglishLetter(String input) {
+        //Act && Assert
         assertFalse(InputValidator.isRussianLetter(input));
     }
 
@@ -74,6 +77,7 @@ class InputValidatorTest {
         "з"
     })
     void testIsRussianLetterForRussianLetter(String input) {
+        //Act && Assert
         assertTrue(InputValidator.isRussianLetter(input));
     }
 
@@ -85,6 +89,7 @@ class InputValidatorTest {
         "лу"
     })
     void testIsNumberLevelForNonNumber(String input) {
+        //Act && Assert
         assertFalse(InputValidator.isNumberLevel(input));
     }
 
@@ -96,6 +101,7 @@ class InputValidatorTest {
         "12"
     })
     void testIsNumberLevelForOutOfBoundsNumber(String input) {
+        //Act && Assert
         assertFalse(InputValidator.isNumberLevel(input));
     }
 
@@ -106,6 +112,7 @@ class InputValidatorTest {
         "3"
     })
     void testIsNumberLevelForInBoundsNumber(String input) {
+        //Act && Assert
         assertTrue(InputValidator.isNumberLevel(input));
     }
 }

@@ -27,22 +27,23 @@ class WordTest {
 
     @Test
     void testConstructor() {
-        char[] actualMaskedWord = word.maskedWord();
-        char[] actualTargetWord = word.targetWord();
-
+        //Arrange
         char[] expectedMaskedWord = "_____".toCharArray();
         char[] expectedTargetWord = "такси".toCharArray();
 
+        //Act
+        char[] actualMaskedWord = word.maskedWord();
+        char[] actualTargetWord = word.targetWord();
+
+        //Assert
         assertArrayEquals(expectedMaskedWord, actualMaskedWord);
         assertArrayEquals(expectedTargetWord, actualTargetWord);
 
     }
 
     @Test
-    void testTryGuessFailedAttempts() { // Надо проверить, что буквы угадываются и не угадываются и слово открывается
-        boolean[] actualResults = makeAttempts('й', 'ш', 'х', 'ь', 'ч');
-        char[] actualMaskedWord = word.maskedWord();
-
+    void testTryGuessFailedAttempts() {
+        //Arrange
         boolean[] expectedResults = {
             false,
             false,
@@ -51,15 +52,19 @@ class WordTest {
             false
         };
         char[] expectedMaskedWord = "_____".toCharArray();
+
+        //Act
+        boolean[] actualResults = makeAttempts('й', 'ш', 'х', 'ь', 'ч');
+        char[] actualMaskedWord = word.maskedWord();
+
+        //Assert
         assertArrayEquals(expectedMaskedWord, actualMaskedWord);
         assertArrayEquals(expectedResults, actualResults);
     }
 
     @Test
     void testTryGuessSuccessfulAttempts() {
-        boolean[] actualResults = makeAttempts('а', 'т', 'к', 'и', 'с');
-        char[] actualMaskedWord = word.maskedWord();
-
+        //Arrange
         boolean[] expectedResults = {
             true,
             true,
@@ -68,15 +73,19 @@ class WordTest {
             true
         };
         char[] expectedMaskedWord = "Такси".toCharArray();
+
+        //Act
+        boolean[] actualResults = makeAttempts('а', 'т', 'к', 'и', 'с');
+        char[] actualMaskedWord = word.maskedWord();
+
+        //Assert
         assertArrayEquals(expectedMaskedWord, actualMaskedWord);
         assertArrayEquals(expectedResults, actualResults);
     }
 
     @Test
     void testTryGuessSuccessfulAndFailedAttempts() {
-        boolean[] actualResults = makeAttempts('а', 'й', 'к', 'з', 'с');
-        char[] actualMaskedWord = word.maskedWord();
-
+        //Arrange
         boolean[] expectedResults = {
             true,
             false,
@@ -85,30 +94,40 @@ class WordTest {
             true
         };
         char[] expectedMaskedWord = "_акс_".toCharArray();
+
+        //Act
+        boolean[] actualResults = makeAttempts('а', 'й', 'к', 'з', 'с');
+        char[] actualMaskedWord = word.maskedWord();
+
+        //Assert
         assertArrayEquals(expectedMaskedWord, actualMaskedWord);
         assertArrayEquals(expectedResults, actualResults);
     }
 
     @Test
-    void testIsWinForWin() { // Надо проверить, что после неудачи нет выигрыша,
-        // После угадывания, если слово не полностью отгадано нет выигрыша
-        // Отгадать все слово и проверить на выигрыш
+    void testIsWinForWin() {
+        //Act
         makeAttempts('а', 'т', 'к', 'и', 'с');
 
+        //Assert
         assertTrue(word.isWin());
     }
 
     @Test
     void testIsWinForLose1() {
+        //Act
         makeAttempts('й', 'ш', 'х', 'ь', 'ч');
 
+        //Assert
         assertFalse(word.isWin());
     }
 
     @Test
     void testIsWinForLose2() {
+        //Act
         makeAttempts('а', 'й', 'к', 'з', 'с');
 
+        //Assert
         assertFalse(word.isWin());
     }
 }

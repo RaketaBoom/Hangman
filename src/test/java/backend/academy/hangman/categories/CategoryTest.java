@@ -10,7 +10,6 @@ import backend.academy.hangman.categories.impl.Fruit;
 import backend.academy.hangman.categories.impl.Sport;
 import java.util.Map;
 import java.util.Random;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,13 +26,9 @@ class CategoryTest {
     @Mock
     Random mockRandom;
 
-    @BeforeAll
-    static void setUp() {
-
-    }
-
     @Test
     void testGetRandomWordForAnimals() {
+        //Arrange
         Category[] categoriesForEachLevel = createCategoriesForEachLevel(TypeCategory.ANIMAL, mockRandom);
         int[] sizeMapOfWords = getSizeMapOfWordsForAnimal();
         configureMockRandom(sizeMapOfWords);
@@ -44,104 +39,115 @@ class CategoryTest {
             Animal.hardWordsAndHints
         );
 
+        //Act
         String[] actualWords = {
             categoriesForEachLevel[0].getRandomWord().modelWord(),
             categoriesForEachLevel[1].getRandomWord().modelWord(),
             categoriesForEachLevel[2].getRandomWord().modelWord(),
         };
 
+        //Assert
         assertArrayEquals(expectedWords, actualWords);
 
     }
 
     @Test
     void testGetRandomWordForColor() {
+        //Arrange
         Category[] categoriesForEachLevel = createCategoriesForEachLevel(TypeCategory.COLOR, mockRandom);
         int[] sizeMapOfWords = getSizeMapOfWordsForColor();
         configureMockRandom(sizeMapOfWords);
-
         String[] expectedWords = getExpectedWords(
             Color.easyWordsAndHints,
             Color.mediumWordsAndHints,
             Color.hardWordsAndHints
         );
 
+        //Act
         String[] actualWords = {
             categoriesForEachLevel[0].getRandomWord().modelWord(),
             categoriesForEachLevel[1].getRandomWord().modelWord(),
             categoriesForEachLevel[2].getRandomWord().modelWord(),
         };
 
+        //Assert
         assertArrayEquals(expectedWords, actualWords);
 
     }
 
     @Test
     void testGetRandomWordForCountry() {
+        //Arrange
         Category[] categoriesForEachLevel = createCategoriesForEachLevel(TypeCategory.COUNTRY, mockRandom);
         int[] sizeMapOfWords = getSizeMapOfWordsForCountry();
         configureMockRandom(sizeMapOfWords);
-
         String[] expectedWords = getExpectedWords(
             Country.easyWordsAndHints,
             Country.mediumWordsAndHints,
             Country.hardWordsAndHints
         );
 
+        //Act
         String[] actualWords = {
             categoriesForEachLevel[0].getRandomWord().modelWord(),
             categoriesForEachLevel[1].getRandomWord().modelWord(),
             categoriesForEachLevel[2].getRandomWord().modelWord(),
         };
 
+        //Assert
         assertArrayEquals(expectedWords, actualWords);
     }
 
     @Test
     void testGetRandomWordForFruit() {
+        //Arrange
         Category[] categoriesForEachLevel = createCategoriesForEachLevel(TypeCategory.FRUIT, mockRandom);
         int[] sizeMapOfWords = getSizeMapOfWordsForFruit();
         configureMockRandom(sizeMapOfWords);
-
         String[] expectedWords = getExpectedWords(
             Fruit.easyWordsAndHints,
             Fruit.mediumWordsAndHints,
             Fruit.hardWordsAndHints
         );
 
+        //Act
         String[] actualWords = {
             categoriesForEachLevel[0].getRandomWord().modelWord(),
             categoriesForEachLevel[1].getRandomWord().modelWord(),
             categoriesForEachLevel[2].getRandomWord().modelWord(),
         };
 
+        //Assert
         assertArrayEquals(expectedWords, actualWords);
     }
 
     @Test
     void testGetRandomWordForSport() {
+        //Arrange
         Category[] categoriesForEachLevel = createCategoriesForEachLevel(TypeCategory.SPORT, mockRandom);
         int[] sizeMapOfWords = getSizeMapOfWordsForSport();
         configureMockRandom(sizeMapOfWords);
-
         String[] expectedWords = getExpectedWords(
             Sport.easyWordsAndHints,
             Sport.mediumWordsAndHints,
             Sport.hardWordsAndHints
         );
 
+        //Act
         String[] actualWords = {
             categoriesForEachLevel[0].getRandomWord().modelWord(),
             categoriesForEachLevel[1].getRandomWord().modelWord(),
             categoriesForEachLevel[2].getRandomWord().modelWord(),
         };
 
+        //Assert
         assertArrayEquals(expectedWords, actualWords);
     }
 
     @ParameterizedTest
     @EnumSource(TypeCategory.class)
     void testInitializeCategory(TypeCategory typeCategory) {
+        //Arrange
         Level level = Level.HARD;
         Category expectedCategory = switch (typeCategory) {
             case ANIMAL -> new Animal(level, mockRandom);
@@ -150,8 +156,11 @@ class CategoryTest {
             case FRUIT -> new Fruit(level, mockRandom);
             case SPORT -> new Sport(level, mockRandom);
         };
+
+        //Act
         Category actualCategory = Category.initializeCategory(typeCategory, level, mockRandom);
 
+        //Assert
         assertSame(expectedCategory.getClass(), actualCategory.getClass());
     }
 
