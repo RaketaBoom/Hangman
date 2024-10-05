@@ -11,18 +11,18 @@ import java.util.Set;
 
 public class Game {
     private static final int MAX_ATTEMPTS = 8; // Параметр, который можно изменять. Это количество попыток в игре
-    private static final int ATTEMPTS_WITHOUT_HINT = 7; // Тоже можно менять. Число попыток без подсказки.
+    private static final int ATTEMPTS_WITHOUT_HINT = 6; // Тоже можно менять. Число попыток без подсказки.
     private static final int HANGMAN_PARTS = 9;
     private static final float STEP = (HANGMAN_PARTS - 1) * 1.0F / MAX_ATTEMPTS;
-
-    private int currAttempt;
 
     private final InputHandler input;
     private final ConsoleDisplay display;
     private final Random random = new Random();
+
     private TypeCategory typeCategory;
     private Level level;
     private Word word;
+    private int currAttempt;
 
     private Set<Character> usedLetters;
 
